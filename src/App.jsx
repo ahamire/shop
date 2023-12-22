@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import {Route,Routes,Link, NavLink} from 'react-router-dom'
 import Shop from './shop'
-import Consoles from './consoles'
+import Consoles from './Consoles'
 import Contact from './Contact'
 function App() {
   const [count, setCount] = useState(0)
