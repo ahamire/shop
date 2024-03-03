@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {Route,Routes,Link, NavLink} from 'react-router-dom'
+import Game from './Game';
 
 function Shop() {
   const [error, setError] = useState(null);
@@ -49,14 +50,14 @@ function Shop() {
     return <div>Loading...</div>;
   } else {
     return (
-      <div className='p-4 max-w-full'>
+      <div className='p-4 max-w-full '>
         <div className='flex items-center justify-between'>
           <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold rounded' onClick={prevSlide}>
             &#8592;
           </button>
-          <div className='w-full text-center grayscale hover:grayscale-0' >
+          <div className='w-full text-center grayscale hover:grayscale-0' onClick={()=>localStorage.setItem("price",prices[currentIndex])}>
           <Link to={`/game/${items[currentIndex].id}`}>
-            <img src={items[currentIndex].background_image} alt="slider-image" className='mx-auto h-96 w-full' />
+            <img src={items[currentIndex].background_image} alt="slider-image" className='mx-auto h-60 sm:h-96 w-full' />
             <h3 className='text-xl font-bold bg-black relative opacity-100 text-white'>{items[currentIndex].name}</h3>
           </Link>
 
@@ -67,12 +68,13 @@ function Shop() {
         </div>
         <div className='grid grid-cols-2 md:grid-cols-4 gap-4 relative top-10'>
           {items.map((item, i) => (
-            <div key={i} className='h-72 hover:text-lime-200 bg-black text-white text-center'>
+            <div key={i} className='h-72 hover:text-lime-200 bg-black text-white text-center' onClick={()=>localStorage.setItem("price",prices[i])}>
                <Link to={`/game/${item.id}`} key={i} className='h-72 hover:text-lime-200 bg-black text-white text-center'> 
-              <img src={item.background_image} alt="" />
+              <img src={item.background_image} alt=""/>
               <p onClick={()=>setgame(item.name)} className='text-center' >{item.name}</p>
               <br/>
               <p className=''>{prices[i]}$</p>
+              
             </Link>
             </div>
           ))}
