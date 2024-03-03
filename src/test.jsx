@@ -11,15 +11,18 @@ const Test=observer(()=>{
         <span>{counterStore.count}</span>
         <button onClick={()=>counterStore.decrement()}>-</button> */}
         {todoStore.todos.map(todo => {
-        return (
-            <div key={todo.id}>
-                <input type="checkbox" checked={todo.checked} onChange={()=>todoStore.completeTodo(todo.id)}/>
-                <span>{todo.title}{todo.id}</span>
-                <button onClick={()=>todoStore.removeTodo(todo.id)}>remove</button>
+    return (
+        <div key={todo.id}>
+            <input type="checkbox" checked={todo.checked} onChange={() => todoStore.completeTodo(todo.id)} />
+
+            <span>{todo.title}{todo.id}</span>
+            <button onClick={() => todoStore.removeTodo(todo.id)}>remove</button>
         </div>
-        )})}
+    );
+})}
+
         
-        <button key onClick={()=>todoStore.addTodo({title:'my title',id:todoStore.todos.length+1})}>add</button>
+        <button onClick={()=>todoStore.addTodo({title:'my title',id:todoStore.todos.length+1})}>add</button>
         </>
     )
 });

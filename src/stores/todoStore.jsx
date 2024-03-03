@@ -1,5 +1,4 @@
 import { makeAutoObservable } from 'mobx';
-
 class TodoStore {
     todos = [
         { title: "ask", id: 1, checked: true },
